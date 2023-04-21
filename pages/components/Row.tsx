@@ -11,6 +11,7 @@ interface Props {
 }
 
 function Row({ title, movies }: Props) {
+  console.log(movies)
   const rowRef = useRef<HTMLDivElement>(null);
   const [isMoved, setIsMoved] = useState(false);
 
@@ -47,9 +48,11 @@ function Row({ title, movies }: Props) {
           ref={rowRef}
           className="flex scrollbar-hide items-center space-x-0.5 overflow-x-scroll md:space-x-2.5 md:p-2"
         >
-          {movies.map((movie) => (
+          {movies.map((movie) => 
+            movie.backdrop_path ? (
             <Thumbnail key={movie.id} movie={movie} />
-          ))}
+          ) : movie.poster_path
+          )}
         </div>
 
         <ChevronRightIcon
