@@ -10,7 +10,7 @@ interface Props {
   movies: Movie[];
 }
 
-function row({ title, movies }: Props) {
+function Row({ title, movies }: Props) {
   const rowRef = useRef<HTMLDivElement>(null);
   const [isMoved, setIsMoved] = useState(false);
 
@@ -61,4 +61,4 @@ function row({ title, movies }: Props) {
   );
 }
 
-export default row;
+export default Row;
