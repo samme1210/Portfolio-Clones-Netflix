@@ -33,6 +33,7 @@ function Header() {
           src="https://rb.gy/ulxxee"
           width={100}
           height={100}
+          alt=""
           className="cursor-pointer object-contain"
         />
 
