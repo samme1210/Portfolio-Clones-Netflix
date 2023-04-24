@@ -1,7 +1,7 @@
 import { Movie } from "@/typescript";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import React, { useRef, useState } from "react";
-import Thumbnail from "../components/Thumbnail";
+import Thumbnail from "./Thumbnail";
 
 interface Props {
   title: string;
