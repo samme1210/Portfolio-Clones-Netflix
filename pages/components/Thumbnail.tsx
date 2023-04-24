@@ -9,6 +9,10 @@ interface Props {
 }
 
 function Thumbnail({ movie }: Props) {
+
+  console.log("backdrop_path:", movie.backdrop_path);
+  console.log("poster_path:", movie.poster_path);
+
   return (
     <div
       className="relative h-28 min-w-[180px] cursor-pointer transition duration-200
@@ -16,7 +20,7 @@ function Thumbnail({ movie }: Props) {
     >
       <Image
         src={`https://image.tmdb.org/t/p/w500${
-          movie.backdrop_path || movie.poster_path
+          movie.backdrop_path ? movie.backdrop_path : movie.poster_path
         }`}
         className="rounded-sm object-cover md:rounded"
         layout="fill"
