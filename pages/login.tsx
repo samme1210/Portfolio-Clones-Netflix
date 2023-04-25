@@ -17,12 +17,14 @@ function Login() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = async ({ email, password }) => {
+  } = useForm<Inputs>()
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    console.log(data)
     if (login) {
-      await signIn(email, password);
+      await signIn(data.email, data.password);
     } else {
-      await signUp(email, password);
+      await signUp(data.email, data.password);
     }
   };
 
@@ -71,9 +73,10 @@ function Login() {
           <label className="inline-block w-full">
             <input
               type="password"
+              {...register('password', { required: true })}
               placeholder="Password"
               className={`input ${
-                errors.password && "border-b-2 border-orange-500"
+                errors.password && 'border-b-2 border-orange-500'
               }`}
             />
             {errors.password && (
@@ -85,6 +88,7 @@ function Login() {
         </div>
 
         <button
+          type="submit"
           className="w-full rounded bg-[#e50914] py-3 font-semibold"
           onClick={() => setLogin(true)}
         >
