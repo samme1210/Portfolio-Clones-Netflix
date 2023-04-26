@@ -29,7 +29,7 @@ function Modal() {
         const index = data.videos.results.findIndex(
           (element: Element) => element.type 
           === "Trailer")
-          setTrailer(data.video?.results[index]?.key)
+          setTrailer(data.videos?.results[index]?.key)
       }
       if (data?.genre) {
           setGenres(data.genres)
