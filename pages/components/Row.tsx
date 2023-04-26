@@ -11,7 +11,6 @@ interface Props {
 }
 
 function Row({ title, movies }: Props) {
-  console.log(movies);
   const rowRef = useRef<HTMLDivElement>(null);
   const [isMoved, setIsMoved] = useState(false);
 
