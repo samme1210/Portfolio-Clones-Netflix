@@ -55,7 +55,9 @@ function Plans() {
             <div className="planBox" ></div>
           </div>
 
-          <Table />
+          {/* <Table /> */}
+
+          <button>Subscribe</button>
         </div>
       </main>
     </div>
