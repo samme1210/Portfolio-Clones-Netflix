@@ -4,6 +4,7 @@ import { Product } from "@stripe/firestore-stripe-payments";
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
+import Table from "./Table";
 
 interface Props {
   products: Product[];
@@ -62,7 +63,7 @@ function Plans({ products }: Props) {
             ))}
           </div>
 
-          {/* <Table /> */}
+          <Table products={products}/>
 
           <button>Subscribe</button>
         </div>
