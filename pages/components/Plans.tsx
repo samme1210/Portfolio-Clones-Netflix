@@ -1,11 +1,16 @@
 import useAuth from "@/hooks/useAuth";
 import { CheckIcon } from "@heroicons/react/24/outline";
+import { Product } from "@stripe/firestore-stripe-payments";
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 
-function Plans() {
-  const {logout} = useAuth()
+interface Props {
+  products: Product[];
+}
+
+function Plans({ products }: Props) {
+  const { logout } = useAuth();
 
   return (
     <div>
@@ -32,27 +37,29 @@ function Plans() {
       </header>
 
       <main className="pt-28 max-w-5xl px-5 pb-12 transition-all md:px-10">
-        <h1 className="mb-3 text-3xl font-medium">Choose the plan that's right for you</h1>
+        <h1 className="mb-3 text-3xl font-medium">
+          Choose the plan that's right for you
+        </h1>
         <ul>
           <li className="flex items-center gap-x-2 text-lg">
-            <CheckIcon className="check__icon" /> Watch all you want.
-            Ad-free.
+            <CheckIcon className="check__icon" /> Watch all you want. Ad-free.
           </li>
           <li className="flex items-center gap-x-2 text-lg">
-            <CheckIcon className="check__icon" /> Recommendations
-            just for you.
+            <CheckIcon className="check__icon" /> Recommendations just for you.
           </li>
           <li className="flex items-center gap-x-2 text-lg">
-            <CheckIcon className="check__icon" /> Change or cancel
-            your plan anytime.
+            <CheckIcon className="check__icon" /> Change or cancel your plan
+            anytime.
           </li>
         </ul>
 
         <div className="mt-4 flex flex-col space-y-4 ">
           <div className="flex w-full items-center justify-center self-end md:w-3/5">
-            <div className="planBox" ></div>
-            <div className="planBox" ></div>
-            <div className="planBox" ></div>
+            {products.map((product) => (
+              <div key={product.id} className="planBox">
+                {product.name}
+              </div>
+            ))}
           </div>
 
           {/* <Table /> */}
