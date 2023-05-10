@@ -1,6 +1,6 @@
 import useAuth from "@/hooks/useAuth";
 import useSubscription from "@/hooks/useSubscription";
-import payments from "@/lib/stripe";
+import payments, { goToBillingPortal } from "@/lib/stripe";
 import { getProducts, Product } from "@stripe/firestore-stripe-payments";
 import { GetStaticProps } from "next";
 import Head from "next/head";
@@ -57,14 +57,10 @@ function Account({ products }: Props) {
 
         <Membership />
 
-        <div
-          className="mt-6 grid grid-cols-1 gap-x-4 border px-4 py-4 
-        md:grid-cols-4 md:border-x-0 md:border-t md:border-b-0 md:px-0
-        md:pb-0"
-        >
-          <h4>Plan Details</h4>
-          {/* find current plan */}
-          <div className="">
+        <div className="mt-6 grid grid-cols-1 gap-x-4 border px-4 py-4 md:grid-cols-4 md:border-x-0 md:border-t md:border-b-0 md:px-0 md:pb-0">
+          <h4 className="text-lg text-[gray]">Plan Details</h4>
+          {/* Find the current plan */}
+          <div className="col-span-2 font-medium">
             {
               products.filter(
                 (product) => product.id === subscription?.product
@@ -72,8 +68,8 @@ function Account({ products }: Props) {
             }
           </div>
           <p
-            className="cursor-pointer text-blue-500 hover-underline 
-          md:text:right "
+            className="cursor-pointer text-blue-500 hover:underline md:text-right"
+            onClick={goToBillingPortal}
           >
             Change plan
           </p>
@@ -87,7 +83,6 @@ function Account({ products }: Props) {
             Sign out of all devices
           </p>
         </div>
-
       </main>
     </div>
   );

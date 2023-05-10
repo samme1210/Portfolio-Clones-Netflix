@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MuiModal from "@mui/material/Modal";
 import { modalState, movieState } from "@/atoms/modalAtom";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { HandThumbUpIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { CheckCircleIcon, HandThumbUpIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Element, Genre } from "@/typescript";
 import ReactPlayer from "react-player/lazy";
 import { FaPlay, FaVolumeOff, FaVolumeUp } from "react-icons/fa";
@@ -14,6 +14,7 @@ function Modal() {
   const [trailer, setTrailer] = useState("");
   const [genres, setGenres] = useState<Genre[]>([]);
   const [muted, setMuted] = useState(false);
+  const [addedToList, setAddedToList] = useState(false)
 
   useEffect(() => {
     if (!movie) return;
@@ -79,7 +80,10 @@ function Modal() {
                 Play
               </button>
 
-              <button className="modalButton">
+              <button className="modalButton" onClick={handleList}>
+                {addedToList ? (
+                  <CheckCircleIcon className="h-7 w-7" />
+                )}
                 <PlusIcon className="h-7 w-7" />
               </button>
 
