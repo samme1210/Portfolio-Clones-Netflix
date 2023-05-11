@@ -3,7 +3,7 @@ import { Movie } from "@/typescript";
 import { collection, DocumentData, onSnapshot } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
-function useList(uid: string) {
+function useList(uid: string | undefined) {
   const [list, setList] = useState<Movie[] | DocumentData[]>([]);
 
   useEffect(() => {
