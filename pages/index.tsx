@@ -1,14 +1,14 @@
 import Head from "next/head";
-import Header from "./components/Header";
-import Banner from "./components/Banner";
-import Row from "./components/Row";
+import Header from "../components/Header";
+import Banner from "../components/Banner";
+import Row from "../components/Row";
 import requests from "../utils/requests";
 import { Movie } from "../typescript";
 import useAuth from "@/hooks/useAuth";
 import { useRecoilValue } from "recoil";
 import { modalState, movieState } from "@/atoms/modalAtom";
-import Modal from './components/Modal'
-import Plans from "./components/Plans";
+import Modal from '../components/Modal'
+import Plans from "../components/Plans";
 import { getProducts, Product } from "@stripe/firestore-stripe-payments";
 import payments from "@/lib/stripe";
 import useSubscription from "@/hooks/useSubscription";

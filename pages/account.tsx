@@ -5,7 +5,7 @@ import { getProducts, Product } from "@stripe/firestore-stripe-payments";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import Membership from "./components/Membership";
+import Membership from "../components/Membership";
 
 interface Props {
   products: Product[];
